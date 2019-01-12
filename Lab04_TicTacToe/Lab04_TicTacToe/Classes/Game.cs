@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Lab04_TicTacToe.Classes
 {
-	class Game
+	public class Game
 	{
 		public Player PlayerOne { get; set; }
 		public Player PlayerTwo { get; set; }
@@ -25,12 +25,46 @@ namespace Lab04_TicTacToe.Classes
 		}
 
 		/// <summary>
-		/// Activate the Play of the game
+		/// Game logic
 		/// </summary>
 		/// <returns>Winner</returns>
 		public Player Play()
 		{
-
+            int counter = 0;
+            //while there is no winner run the game
+            while (Winner == null && counter < 9)
+            {
+                //Game Logic
+                Board.DisplayBoard();
+                NextPlayer().TakeTurn(Board);
+                if(CheckForWinner(Board))
+                {
+                    Winner = NextPlayer();
+                }
+                else
+                {
+                    counter++;
+                    SwitchPlayer();
+                    Console.Clear();
+                }
+                if (counter == 9
+                    && Winner == null)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Draw!");
+                    Board.DisplayBoard();
+                    Console.WriteLine("Press any key to exit . . .");
+                    Console.ReadKey();
+                    Environment.Exit(0);
+                }
+            }
+            Console.Clear();
+            Console.WriteLine($"The winner is {Winner.Name}");
+            Board.DisplayBoard();
+            Console.WriteLine("Press any key to exit . . .");
+            Console.Read();
+            return Winner;
+        
 			//TODO: Complete this method and utilize the rest of the class structure to play the game.
 
             /*
@@ -82,10 +116,13 @@ namespace Lab04_TicTacToe.Classes
 				string b = Board.GameBoard[p2.Row, p2.Column];
 				string c = Board.GameBoard[p3.Row, p3.Column];
 
-				// TODO:  Determine a winner has been reached. 
-				// return true if a winner has been reached. 
-			
-			}
+                // TODO:  Determine a winner has been reached. 
+                // return true if a winner has been reached. 
+                if (a == b && b == c && a == c)
+                {
+                    return true;
+                }
+            }
 
 			return false;
 		}

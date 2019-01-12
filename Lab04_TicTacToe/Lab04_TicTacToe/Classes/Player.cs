@@ -4,9 +4,13 @@ using System.Text;
 
 namespace Lab04_TicTacToe.Classes
 {
-    class Player
-    {
+    public class Player
+    {   
+        /// <summary>
+        /// players name
+        /// </summary>
 		public string Name { get; set; }
+
 		/// <summary>
 		/// P1 is X and P2 will be O
 		/// </summary>
@@ -31,7 +35,11 @@ namespace Lab04_TicTacToe.Classes
 
 		}
 
-
+        /// <summary>
+        /// Switch for which position the player chose
+        /// </summary>
+        /// <param name="position"></param>
+        /// <returns></returns>
 		public static Position PositionForNumber(int position)
 		{
 			switch (position)
@@ -50,7 +58,10 @@ namespace Lab04_TicTacToe.Classes
 			}
 		}
 
-	
+	    /// <summary>
+        /// sets position to the board with a marker
+        /// </summary>
+        /// <param name="board"></param>
 		public void TakeTurn(Board board)
 		{
 			IsTurn = true;
