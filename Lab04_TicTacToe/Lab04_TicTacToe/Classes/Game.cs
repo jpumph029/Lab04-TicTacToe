@@ -36,7 +36,7 @@ namespace Lab04_TicTacToe.Classes
             while (Winner == null && counter < 9)
             {
 
-                //Game Logic for player one
+                //Game Logic
                 Board.DisplayBoard();
                 NextPlayer().TakeTurn(Board);
                 if(CheckForWinner(Board))
