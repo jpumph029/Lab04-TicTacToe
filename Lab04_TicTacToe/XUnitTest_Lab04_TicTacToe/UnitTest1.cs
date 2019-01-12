@@ -6,6 +6,7 @@ namespace XUnitTest_Lab04_TicTacToe
 {
     public class UnitTest1
     {
+        //test for winners
         [Fact]
         public void CanWin()
         {
@@ -18,6 +19,19 @@ namespace XUnitTest_Lab04_TicTacToe
             game.Board.GameBoard[1, 0] = "O";
             game.Board.GameBoard[2, 0] = "O";
             Assert.True(game.CheckForWinner(game.Board));
+        }
+        [Fact]
+        public void CanSwitchPlayers()
+        {
+            Player p1 = new Player();
+            Player p2 = new Player();
+            p1.Marker = "X";
+            p2.Marker = "O";
+            Game game = new Game(p1, p2);
+            game.SwitchPlayer();
+            Assert.True(game.PlayerOne.IsTurn);
+            game.SwitchPlayer();
+            Assert.True(game.PlayerTwo.IsTurn);
         }
     }
 }
