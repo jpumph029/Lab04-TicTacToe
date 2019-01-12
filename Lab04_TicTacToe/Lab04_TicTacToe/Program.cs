@@ -13,13 +13,13 @@ namespace Lab04_TicTacToe
             p1.Marker = "X";
             p2.Marker = "O";
 
-            //player once picks their name
+            //player one picks their name
             Console.Write("Player one write your name: ");
             string userInput1 = Console.ReadLine();
             p1.Name = userInput1;
 
             // player two picks their name
-            Console.Write("Player Two write your name: ");
+            Console.Write("Player two write your name: ");
             string userInput2 = Console.ReadLine();
             p2.Name = userInput2;
 

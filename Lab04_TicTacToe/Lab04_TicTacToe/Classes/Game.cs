@@ -30,25 +30,40 @@ namespace Lab04_TicTacToe.Classes
 		/// <returns>Winner</returns>
 		public Player Play()
 		{
+            
+            int counter = 0;
             //while there is no winner run the game
-            while (Winner != PlayerOne || Winner != PlayerTwo)
+            while (Winner == null && counter < 9)
             {
-                //full loop of the game for player one
-                Board.DisplayBoard();
-                PlayerOne.TakeTurn(Board);
-                NextPlayer();
-                SwitchPlayer();
-                CheckForWinner(Board);
-                Console.Clear();
 
-                //full loop of the game for player two
+                //Game Logic for player one
                 Board.DisplayBoard();
-                PlayerTwo.TakeTurn(Board);
-                NextPlayer();
-                SwitchPlayer();
-                CheckForWinner(Board);
-                Console.Clear();
+                NextPlayer().TakeTurn(Board);
+                if(CheckForWinner(Board))
+                {
+                    Winner = NextPlayer();
+                }
+                else
+                {
+                    counter++;
+                    SwitchPlayer();
+                    Console.Clear();
+                }
+                if (counter == 9
+                    && Winner == null)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Draw!");
+                    Board.DisplayBoard();
+                    Console.WriteLine("Press any key to exit . . .");
+                    Console.ReadKey();
+                    Environment.Exit(0);
+                }
             }
+            Console.Clear();
+            Console.WriteLine($"The winner is {Winner.Name}");
+            Board.DisplayBoard();
+            Console.WriteLine("Press any key to exit . . .");
             Console.Read();
             return Winner;
         
@@ -103,10 +118,13 @@ namespace Lab04_TicTacToe.Classes
 				string b = Board.GameBoard[p2.Row, p2.Column];
 				string c = Board.GameBoard[p3.Row, p3.Column];
 
-				// TODO:  Determine a winner has been reached. 
-				// return true if a winner has been reached. 
-			
-			}
+                // TODO:  Determine a winner has been reached. 
+                // return true if a winner has been reached. 
+                if (a == b && b == c && a == c)
+                {
+                    return true;
+                }
+            }
 
 			return false;
 		}
