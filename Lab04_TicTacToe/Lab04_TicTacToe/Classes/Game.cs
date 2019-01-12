@@ -30,12 +30,10 @@ namespace Lab04_TicTacToe.Classes
 		/// <returns>Winner</returns>
 		public Player Play()
 		{
-            
             int counter = 0;
             //while there is no winner run the game
             while (Winner == null && counter < 9)
             {
-
                 //Game Logic
                 Board.DisplayBoard();
                 NextPlayer().TakeTurn(Board);
