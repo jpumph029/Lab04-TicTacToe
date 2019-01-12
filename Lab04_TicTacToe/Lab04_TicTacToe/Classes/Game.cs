@@ -25,16 +25,31 @@ namespace Lab04_TicTacToe.Classes
 		}
 
 		/// <summary>
-		/// Activate the Play of the game
+		/// Game logic
 		/// </summary>
 		/// <returns>Winner</returns>
 		public Player Play()
 		{
-            Board.DisplayBoard();
+            //while there is no winner run the game
+            while (Winner != PlayerOne || Winner != PlayerTwo)
+            {
+                //full loop of the game for player one
+                Board.DisplayBoard();
+                PlayerOne.TakeTurn(Board);
+                NextPlayer();
+                SwitchPlayer();
+                CheckForWinner(Board);
+                Console.Clear();
+
+                //full loop of the game for player two
+                Board.DisplayBoard();
+                PlayerTwo.TakeTurn(Board);
+                NextPlayer();
+                SwitchPlayer();
+                CheckForWinner(Board);
+                Console.Clear();
+            }
             Console.Read();
-
-
-
             return Winner;
         
 			//TODO: Complete this method and utilize the rest of the class structure to play the game.

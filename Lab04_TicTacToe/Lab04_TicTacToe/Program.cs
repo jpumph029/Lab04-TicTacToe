@@ -7,18 +7,23 @@ namespace Lab04_TicTacToe
     {
         static void Main(string[] args)
         {
+            //new players and their markers
             Player p1 = new Player();
             Player p2 = new Player();
+            p1.Marker = "X";
+            p2.Marker = "O";
+
             //player once picks their name
             Console.Write("Player one write your name: ");
             string userInput1 = Console.ReadLine();
-            userInput1 = p1.Name;
+            p1.Name = userInput1;
 
             // player two picks their name
             Console.Write("Player Two write your name: ");
             string userInput2 = Console.ReadLine();
-            userInput2 = p2.Name;
-            // init new game
+            p2.Name = userInput2;
+
+            // initialize new game
             Game game = new Game(p1, p2);
             game.Play();
         }
