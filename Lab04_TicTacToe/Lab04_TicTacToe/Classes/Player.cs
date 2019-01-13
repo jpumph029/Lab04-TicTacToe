@@ -22,7 +22,7 @@ namespace Lab04_TicTacToe.Classes
 		public bool IsTurn { get; set; }
 
 
-		public Position GetPosition(Board board)
+        public Position GetPosition(Board board)
 		{
 			Position desiredCoordinate = null;
 			while (desiredCoordinate is null)
@@ -69,15 +69,26 @@ namespace Lab04_TicTacToe.Classes
 			Console.WriteLine($"{Name} it is your turn");
 
 			Position position = GetPosition(board);
-
+            /*
 			if (Int32.TryParse(board.GameBoard[position.Row, position.Column], out int _))
 			{
-				board.GameBoard[position.Row, position.Column] = Marker;
-			}
-			else
-			{
-				Console.WriteLine("This space is already occupied");
-			}
-		}
+                board.GameBoard[position.Row, position.Column] = Marker;
+            }
+            else
+            {
+                Console.WriteLine("This space is already occupied");
+            }
+            */
+			
+            if (board.GameBoard[position.Row, position.Column].ToString() == "X" || board.GameBoard[position.Row, position.Column].ToString() == "O")
+            {
+                Console.WriteLine("This space is already occupied");
+            }
+            else
+            {
+                board.GameBoard[position.Row, position.Column] = Marker;
+            }
+        }
+
 	}
 }
