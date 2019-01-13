@@ -27,5 +27,6 @@ namespace Lab04_TicTacToe
             Game game = new Game(p1, p2);
             game.Play();
         }
+        public static int counter = 0;
     }
 }
