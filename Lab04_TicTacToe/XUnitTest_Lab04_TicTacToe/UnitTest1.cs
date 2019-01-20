@@ -48,5 +48,10 @@ namespace XUnitTest_Lab04_TicTacToe
             Assert.Equal("X", game.Board.GameBoard[0, 0]);
             Assert.Equal("O", game.Board.GameBoard[0, 1]);
         }
+        [Fact]
+        public void CanDisplayGameBoard()
+        { Board board = new Board();
+            Assert.True(board.DisplayBoard());
+        }
     }
 }
