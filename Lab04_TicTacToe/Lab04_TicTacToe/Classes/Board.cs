@@ -19,7 +19,7 @@ namespace Lab04_TicTacToe.Classes
         /// <summary>
         /// Displays the Tic Tac Toe Board
         /// </summary>
-		public void DisplayBoard()
+		public bool DisplayBoard()
 		{
             for (int i = 0; i < GameBoard.GetLength(0); i++)
             {
@@ -29,6 +29,7 @@ namespace Lab04_TicTacToe.Classes
                 }
                 Console.WriteLine();
             }
+            return true;
 		}
 	}
 }
